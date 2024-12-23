@@ -1,3 +1,5 @@
+import numpy as np
+
 #1###############################################################################################
 # Complete the square sum function so that it squares each number passed into it and then sums the results together.
 
@@ -126,4 +128,151 @@ def findNeedle(junksarr):
             return f'found the needle at position {index}'
 
 result = findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"])
+print(result)
+
+#11###############################################################################################
+# Find the mean (average) of a list of numbers in an array.
+
+def find_average(nums):
+    return average(nums) # with Numpy
+
+def find_average(nums):
+    return sum(nums) / len(nums)
+
+result = find_average([1,2,3])
+print(result)
+
+#12###############################################################################################
+# Create a function which answers the question "Are you playing banjo?".
+# If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+def areYouPlayingBanjo(name):
+    if name[0]=="R" or name[0]=="r":
+        return f'{name} plays banjo'
+    else:
+        return f'{name} does not play banjo'
+result = areYouPlayingBanjo("Rebecca")
+print(result) 
+
+#13###############################################################################################
+# The Western Suburbs Croquet Club has two categories of membership, Senior and Open. 
+# They would like your help with an application form that will tell prospective members which category they will be placed.
+# To be a senior, a member must be at least 55 years old and have a handicap greater than 7. 
+# In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+
+def open_or_senior(data): # with dict 
+    output=[]
+    for key, value in data.items():
+        if key>=55 and value>7:
+            output.append("Senior")
+        else:
+            output.append("Open")
+    return output
+
+result = open_or_senior({58:8,25:9, 63:8, 55:8})
+
+def open_or_senior(data): # with nested list 
+    output=[]
+    for pair in data:
+        if pair[0]>=55 and pair[1]>7:
+            output.append("Senior")
+        else:
+            output.append("Open")
+    return output
+
+result = open_or_senior([[58,8],[25,9], [63,8], [55,8]])
+
+def openOrSenior(data): # with list comprehension
+  return ["Senior" if age >= 55 and handicap >= 8 else "Open" for (age, handicap) in data]
+
+result = open_or_senior([[58,8],[25,9], [63,8], [55,8]])
+print(result)
+
+
+#14###############################################################################################
+# Make a program that filters a list of strings and returns a list with only your friends name in it.
+# If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours!
+# Otherwise, you can be sure he's not.
+
+def friend(x):
+    return [item for item in x if len(item)==4]
+    
+result = friend(["Ryan", "Kieran", "Jason", "Yous"])
+print(result)
+
+
+#15###############################################################################################
+# Write a program that finds the summation of every number from 1 to num. 
+# The number will always be a positive integer greater than 0. Your function only needs to return the result.
+
+def summation(num):
+    return sum([i for i in range(0,num+1)])
+
+result=summation(7)
+
+#16###############################################################################################
+# Given a list of integers, determine whether the sum of its elements is odd or even.
+# Give your answer as a string matching "odd" or "even".
+# If the input array is empty consider it as: [0] (array with a zero).
+
+def odd_or_even(arr):
+    if sum(arr)%2==0:
+        return "even" 
+    else:
+        return "odd"    
+    
+result = odd_or_even([0, 1, 4])
+print(result)
+
+#17###############################################################################################
+# In this kata you will create a function that takes a list of non-negative integers and strings
+# and returns a new list with the strings filtered out.
+def filter_list(l):
+    return [item for item in l if isinstance(item, int)]
+    
+result =filter_list([1,2,'aasf','1','123',123])
+print(result)
+
+#18###############################################################################################
+# Code as fast as you can! You need to double the integer and return it.
+
+def double_integer(i):
+    return i*2
+
+result= double_integer(2)
+print(result)
+
+
+#19###############################################################################################
+# Create a function finalGrade, which calculates the final grade of a student depending on two parameters: 
+# a grade for the exam and a number of completed projects.
+# This function should take two arguments: exam - grade for exam (from 0 to 100); 
+# projects - number of completed projects (from 0 and above);
+# This function should return a number (final grade). There are four types of final grades:
+
+# 100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
+# 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
+# 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
+# 0, in other cases
+
+def final_grade(exam, projects):
+    if exam>90 or projects>10:
+        return 100
+    elif exam>75 and projects>=5:
+        return 90
+    elif exam >50 and projects>=2:
+        return 75
+    else:
+        return 0
+    
+result = final_grade(76,10)
+print(result)
+
+
+#20###############################################################################################
+# You get an array of numbers, return the sum of all of the positives ones.
+def positive_sum(arr):
+    return sum([i for i in arr if i>0])
+
+result = positive_sum([1,2,5,-8,-2,0])
 print(result)
